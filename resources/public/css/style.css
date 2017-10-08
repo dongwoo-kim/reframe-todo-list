@@ -1,2 +1,4 @@
 /* some style */
 
+#app .done {text-decoration: line-through;}
+#app .current-state {font-weight: bold}

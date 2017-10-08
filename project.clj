@@ -10,7 +10,9 @@
                  [org.clojure/clojurescript "1.9.908"]
                  [org.clojure/core.async  "0.3.443"]
                  [reagent "0.7.0"]
-                 [re-frame "0.10.1"]]
+                 [re-frame "0.10.1"]
+                 [bidi "2.1.2"]
+                 [kibu/pushy "0.3.8"]]
 
   :plugins [[lein-figwheel "0.5.13"]
             [lein-cljsbuild "1.1.7" :exclusions [[org.clojure/clojure]]]]

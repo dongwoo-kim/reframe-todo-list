@@ -1,6 +1,7 @@
 (ns todoapp.views
   (:require [reagent.core :refer [atom]]
-            [re-frame.core :refer [subscribe dispatch]]))
+            [re-frame.core :refer [subscribe dispatch]]
+            [todoapp.routes :refer [url-for]]))
 
 (defn todo-input []
   (let [value (atom "")
@@ -12,13 +13,12 @@
       [:form {:on-submit on-submit}
        [:input {:on-change on-change
                 :value @value}]
+       " "
        [:button "ADD"]])))
 
 (defn todo-item [todo]
   (let [id (:id todo)]
-    [:li {:style {:text-decoration (if (:done todo)
-                                     "line-through"
-                                     "none")}}
+    [:li {:class (if (:done todo) "done" "")}
      [:input {:type :checkbox
               :checked (:done todo)
               :on-change #(dispatch [:done-todo id])}]
@@ -29,18 +29,16 @@
 
 (defn state-item [key name count]
   (let [showing @(subscribe [:showing])
-        class-name (if (= showing key) "current-state" "")
-        on-click #(do (.preventDefault %)
-                      (dispatch [:set-showing key]))]
+        class-name (if (= showing key) "current-state" "")]
     [:li
-     [:a {:href (str "#" name)
-          :on-click on-click
+     [:a {:href (url-for key)
           :class class-name}
       (str name " (" count ")")]]))
 
-(defn todo-state [todos]
-  (let [all-count (count todos)
+(defn todo-state []
+  (let [todos @(subscribe [:todos])
         done-count @(subscribe [:done-count])
+        all-count (count todos)
         active-count (- all-count done-count)]
     [:ul
      [state-item :all "All" all-count]
@@ -48,12 +46,12 @@
      [state-item :done "Done" done-count]]))
 
 (defn container []
-  (let [todos @(subscribe [:visible-todos])
+  (let [visible-todos @(subscribe [:visible-todos])
         showing @(subscribe [:showing])]
     [:div
-     [:h1 "TODO List"]
+     [:h1 "TODO LIST"]
      [todo-input]
      [:ul
-      (for [todo todos]
+      (for [todo visible-todos]
         ^{:key (:id todo)}[todo-item todo])]
-     [todo-state todos]]))
+     [todo-state]]))
