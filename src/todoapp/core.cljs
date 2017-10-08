@@ -6,8 +6,7 @@
             [todoapp.subs]
             [todoapp.views :refer [container]]))
 
-(render-component [container] (js/document.getElementById "app"))
-
 (defn on-js-reload []
   (js/console.log "reload!!")
-  (dispatch-sync [:initialize]))
+  (dispatch-sync [:initialize])
+  (render-component [container] (js/document.getElementById "app")))
