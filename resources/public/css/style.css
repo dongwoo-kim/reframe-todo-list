@@ -1,4 +1,7 @@
-/* some style */
-
-#app .done {text-decoration: line-through;}
+#app {width: 200px;}
+#app .state {display: flex; padding: 0; list-style: none}
+#app .state li {flex: auto}
 #app .current-state {font-weight: bold}
+#app .todo-list {list-style: none; padding: 0}
+#app .todo-list li {padding: 5px}
+#app .todo-list .done {text-decoration: line-through;}

@@ -22,8 +22,8 @@
   :cljsbuild {:builds
               [{:id "dev"
                 :source-paths ["src"]
-                :figwheel {:on-jsload "todoapp.core/on-js-reload"}
-                          ;  :open-urls ["http://localhost:3449/index.html"]}
+                ; :figwheel {:on-jsload "todoapp.core/main"
+                ;            :open-urls ["http://localhost:3449/index.html"]}
 
                 :compiler {:main todoapp.core
                            :asset-path "js/compiled/out"

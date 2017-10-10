@@ -8,7 +8,7 @@
             [todoapp.views :refer [container]]
             [todoapp.routes :refer [history]]))
 
-(defn on-js-reload []
+(do
   (pushy/start! history)
   (dispatch-sync [:initialize])
   (render-component [container] (js/document.getElementById "app")))

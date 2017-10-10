@@ -3,7 +3,7 @@
             [re-frame.core :refer [subscribe dispatch]]
             [todoapp.routes :refer [url-for]]))
 
-(defn todo-input []
+(defn input-form []
   (let [value (atom "")
         on-change #(reset! value (-> % .-target .-value))
         on-submit #(do (.preventDefault %)
@@ -40,7 +40,7 @@
         done-count @(subscribe [:done-count])
         all-count (count todos)
         active-count (- all-count done-count)]
-    [:ul
+    [:ul.state
      [state-item :all "All" all-count]
      [state-item :active "Active" active-count]
      [state-item :done "Done" done-count]]))
@@ -49,9 +49,9 @@
   (let [visible-todos @(subscribe [:visible-todos])
         showing @(subscribe [:showing])]
     [:div
-     [:h1 "TODO LIST"]
-     [todo-input]
-     [:ul
+     [:h2 "TODO LIST"]
+     [todo-state]
+     [input-form]
+     [:ul.todo-list
       (for [todo visible-todos]
-        ^{:key (:id todo)}[todo-item todo])]
-     [todo-state]]))
+        ^{:key (:id todo)}[todo-item todo])]]))
