@@ -8,6 +8,8 @@
             [todoapp.views :refer [container]]
             [todoapp.routes :refer [history]]))
 
+(defonce _init (dispatch-sync [:initialize]))
+
 (do
   (pushy/start! history)
   (dispatch-sync [:initialize])

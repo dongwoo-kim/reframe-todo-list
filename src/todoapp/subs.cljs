@@ -2,12 +2,10 @@
   (:require [re-frame.core :refer [reg-sub]]))
 
 (reg-sub :todos
-  (fn [db]
-    (vals (:sorted-todos db))))
+  #(vals (:sorted-todos %)))
 
 (reg-sub :showing
-  (fn [db]
-    (:showing db)))
+  #(:showing %))
 
 (reg-sub :done-count
   :<- [:todos]
@@ -18,8 +16,7 @@
   :<- [:todos]
   :<- [:showing]
   (fn [[todos showing] _]
-    (let [filter-fn (case showing
-                      :active (complement :done)
-                      :done :done
-                      :all identity)]
-      (filter filter-fn todos))))
+    (filter (case showing
+              :done :done
+              :active (complement :done)
+              :all identity) todos)))
