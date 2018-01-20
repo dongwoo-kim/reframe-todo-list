@@ -21,7 +21,8 @@ Simple todo-list app written with ClojureScript and Reframe
 - `lein figwheel`
 
 ## Todos
-- [] Add test cases
-- [] Save data to server (or localStorage)
-- [] Inline editing
-- [] Clearing todo items
+- [ ] Add test cases
+- [ ] Add core.spec validation
+- [ ] Save data to server (or localStorage)
+- [ ] Inline editing
+- [ ] Clearing todo items
