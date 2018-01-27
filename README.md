@@ -10,6 +10,7 @@ Simple todo-list app written with ClojureScript and Reframe
 - Reframe : SPA framework for Reagent
 - bidi : URL routing
 - pushy : HTML5 pushState
+- Ring/Compojure : simple API server
 
 ## Features
 - Creating/Deleting todo item
@@ -23,6 +24,6 @@ Simple todo-list app written with ClojureScript and Reframe
 ## Todos
 - [ ] Add test cases
 - [ ] Add core.spec validation
-- [ ] Save data to server (or localStorage)
+- [x] Save data to server (or localStorage)
 - [ ] Inline editing
 - [ ] Clearing todo items
