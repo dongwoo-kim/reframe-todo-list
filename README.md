@@ -23,7 +23,7 @@ Simple todo-list app written with ClojureScript and Reframe
 
 ## Todos
 - [ ] Add test cases
-- [ ] Add core.spec validation
+- [ ] Add `cljs.spec.alpha` validation
 - [x] Save data to server (or localStorage)
 - [ ] Inline editing
 - [ ] Clearing todo items
