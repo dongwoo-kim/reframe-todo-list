@@ -9,6 +9,7 @@
                  [compojure "1.6.0"]
                  [reagent "0.8.0-alpha2"]
                  [re-frame "0.10.3-rc2"]
+                 [day8.re-frame/http-fx "0.1.4"]
                  [bidi "2.1.2"]
                  [kibu/pushy "0.3.8"]]
 
@@ -20,6 +21,7 @@
   :cljsbuild {:builds
               [{:id "dev"
                 :source-paths ["src"]
+                :figwheel {:on-jsload "todoapp.core/main"}
                 :compiler {:main todoapp.core
                            :asset-path "js/compiled/out"
                            :output-to "resources/public/js/compiled/todoapp.js"

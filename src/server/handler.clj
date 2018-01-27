@@ -25,13 +25,17 @@
     (GET "/" [] (response (vec (vals @todos))))
     (POST "/" [title]
       (add-todo title)
-      (response {:success true :id @last-id}))
+      (response {:id @last-id
+                 :title title}))
     (PUT "/:id/toggle" [id]
-      (toggle-todo (Long. id))
-      (response {:success true :done (get-in @todos [(Long. id) :done])}))
+      (let [id (Long. id)]
+        (toggle-todo id)
+        (response {:id id
+                   :done (get-in @todos [id :done])})))
     (DELETE "/:id" [id]
-      (delete-todo (Long. id))
-      (response {:success true})))
+      (let [id (Long. id)]
+        (delete-todo id)
+        (response {:id id}))))
   (not-found "Not Found"))
 
 (def app

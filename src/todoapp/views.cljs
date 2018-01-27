@@ -21,7 +21,7 @@
     [:li {:class (if (:done todo) "done" "")}
      [:input {:type :checkbox
               :checked (:done todo)
-              :on-change #(dispatch [:done-todo id])}]
+              :on-change #(dispatch [:toggle-todo id])}]
      [:span (str " " (:title todo) " ")]
      [:input {:type :button
               :value "X"
@@ -47,9 +47,10 @@
 
 (defn container []
   (let [visible-todos @(subscribe [:visible-todos])
+        loading @(subscribe [:loading])
         showing @(subscribe [:showing])]
     [:div
-     [:h2 "TODO LIST"]
+     [:h2 (str "TODO LIST" (when loading "..."))]
      [todo-state]
      [input-form]
      [:ul.todo-list

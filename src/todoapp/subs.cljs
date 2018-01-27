@@ -7,6 +7,9 @@
 (reg-sub :showing
   #(:showing %))
 
+(reg-sub :loading
+  #(:loading %))
+
 (reg-sub :done-count
   :<- [:todos]
   (fn [todos]

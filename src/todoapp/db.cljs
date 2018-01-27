@@ -5,4 +5,5 @@
   :initialize
   (fn []
     {:showing :all
+     :loading false
      :sorted-todos (sorted-map)}))
