@@ -9,6 +9,7 @@
                  [compojure "1.6.0"]
                  [reagent "0.8.0-alpha2"]
                  [re-frame "0.10.3-rc2"]
+		 [javax.xml.bind/jaxb-api "2.4.0-b180830.0359"]
                  [day8.re-frame/http-fx "0.1.4"]
                  [bidi "2.1.2"]
                  [kibu/pushy "0.3.8"]]
